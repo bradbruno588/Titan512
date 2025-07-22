@@ -1,0 +1,23 @@
+
+import hashlib
+
+class TitanHash512:
+    def __init__(self):
+        pass
+
+    def hash(self, data: str) -> str:
+        """
+        Computes a 512-bit hash using a modified SHA-256-based algorithm.
+        This is a placeholder implementation using double SHA-256 for demonstration.
+        """
+        encoded_data = data.encode("utf-8")
+        first_hash = hashlib.sha256(encoded_data).digest()
+        second_hash = hashlib.sha256(first_hash).digest()
+        final_hash = first_hash.hex() + second_hash.hex()
+        return final_hash
+
+if __name__ == "__main__":
+    titan = TitanHash512()
+    input_message = "Hello, TitanHash-512!"
+    hash_output = titan.hash(input_message)
+    print("TitanHash-512 Output:", hash_output)
